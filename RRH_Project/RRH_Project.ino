@@ -6,17 +6,24 @@ const int LED_Eyes = 3;  // LED that lights up
 
 #include <Servo.h>
 
-// Interaction 2//
+// Interaction 2 //
 Servo servo_1;  // Wolf wags tail // Servo Pin 
 const int interaction_2 = 4 // Button pin
 
-// Interaction 3//
+// Interaction 3 //
 Servo servo_2; // Door opens to grandma's house ----- + Grandma flipping
 Servo servo_Bed; // Bed servo
 const int interaction_3 = 6 // Button pin 
 
-// VOID SET UPS 
+// Interaction 4 //
+Servo servo_3; // Closet spin
+const int interaction_4 = 9 // Button pin
 
+// Interaction 5 //
+const int interation_5; = 11 // Button pin
+
+
+// VOID SET UPS 
 void setup() {
   //Interaction 1//
   pinMode(interaction_1, INPUT); //Interation 1
@@ -32,6 +39,11 @@ void setup() {
   pinMode(interaction_3, INPUT);
 
   //Interaction 4//
+  servo_3.attach(10); //Pin for Servo 3
+  pinMode(interaction_4, INPUT);
+
+  //Interaction 5//
+  pinMode(interaction_5, INPUT);
 }
 
 
@@ -60,6 +72,17 @@ void loop() {
     servo_Bed.write(180);
   } else {
     servo_2.write(0);
+  }
+
+  //Interation 4//
+  if(digitalRead(interaction_4) == HIGH){
+    servo_3.write(180);
+  }
+
+  //Interation 5//
+  if(digitalRead(interaction_5) == HIGH){
+    delay(1000);
+    servo_Bed.write(180);
   }
 
 
